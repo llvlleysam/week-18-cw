@@ -18,3 +18,4 @@ export const postOrder = async (newProduct) => {
     const response = await httpRequest.post(`${fetchOrderURL}`,newProduct)
     return response.data
 }
+

@@ -2,7 +2,6 @@
 import { useContext } from "react";
 import { RootContext } from "../../Context/Context.context";
 import { useOrderMutation } from "../../hooks/useGetProducts";
-import { useQueryClient } from "@tanstack/react-query";
 
 export default function Cart({ cart }) {
   const { setShowModal, setCurrentCart } = useContext(RootContext);

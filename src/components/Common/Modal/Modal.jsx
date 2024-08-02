@@ -1,9 +1,12 @@
 import { useContext } from "react";
 import { RootContext } from "../../../Context/Context.context";
+import { useOrderMutation } from "../../../hooks/useGetProducts";
 
 export default function Modal() {
   const { showModal, setShowModal, currentCart, setCurrentCart } =
     useContext(RootContext);
+
+    const x = useOrderMutation();
     // console.log(currentCart);
     // const { title , description , images , price } = currentCart;
   return (
@@ -38,7 +41,7 @@ export default function Modal() {
                 </span>
                 <div className="flex justify-around">
                   <p>Price : {currentCart?.price} $</p>
-                  <button className="bg-yellow-500 py-2 px-4 text-sm hover:bg-yellow-400">
+                  <button onClick={() => x.mutate(currentCart)} className="bg-yellow-500 py-2 px-4 text-sm hover:bg-yellow-400">
                     Add To Cart
                   </button>
                 </div>

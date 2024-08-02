@@ -1,17 +1,19 @@
+import { useDeleteOrder } from "../../hooks/useGetProducts"
 
-export default function CartWallet() {
+export default function CartWallet({order}) {
+  const {mutate}=useDeleteOrder()
   return (
     <div className="flex justify-around p-4" >
-      <img className="w-14 h-20" src="../../../public/dress5.jpg" alt="" />
+      <img className="w-14 h-20" src={order.images[0]} alt={`${order.title}'s image`} />
       <div className="flex flex-col gap-4">
-        <p>Frill mini dress in yellow polka dot</p>
+        <p>{order.title}</p>
         <div className="flex  justify-evenly items-center">
             <div className="flex">
-                <p>10.9 $</p>
+                <p>{order.price} $</p>
                 <p>X</p>
                 <p>2</p>
             </div>
-            <button className="bg-gray-200 border border-black py-2 px-4 text-sm hover:bg-gray-400">Remove</button>
+            <button onClick={()=>mutate(order.id)} className="bg-gray-200 border border-black py-2 px-4 text-sm hover:bg-gray-400">Remove</button>
         </div>
       </div>
     </div>

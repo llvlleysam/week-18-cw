@@ -37,3 +37,14 @@ export const useOrderMutation = () => {
 
   return x
 };
+
+export const useDeleteOrder = () =>{
+  const quaryClientDelete = useQueryClient();
+  return useMutation({
+    mutationFn: async(deletedOrderId)=>
+      await httpRequest.delete(`/order/${deletedOrderId}`),
+    onSuccess:()=>{
+      quaryClientDelete.invalidateQueries("order")
+    }
+  })
+}
